@@ -32,7 +32,7 @@ function mineOre(event) {
 }
 
 function updateOreSprite() {
-    ore.style.backgroundImage = `url('ore${oreState}.png')`;
+    ore.style.backgroundImage = `url('assets/ore${oreState}.png')`;
 }
 
 function createParticleEffect(x, y) {
