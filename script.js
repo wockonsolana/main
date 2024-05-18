@@ -7,6 +7,7 @@ const scoreDisplay = document.getElementById('score');
 
 document.addEventListener('DOMContentLoaded', () => {
     updateOreSprite(); // Initialize the ore image when the page loads
+    updateScoreDisplay(); // Initialize the score display
 });
 
 ore.addEventListener('click', mineOre);
@@ -16,24 +17,18 @@ function mineOre(event) {
     const mouseX = event.clientX;
     const mouseY = event.clientY;
 
-    // Update the score every 2 clicks
-    if (clickCount % 2 === 0) {
-        score += 10;
-    }
-
-    // Add 60 points when the rock breaks (every 10 clicks)
     if (clickCount % 10 === 0) {
-        score += 60;
+        score += 60; // Add 60 points when the rock breaks (every 10 clicks)
         oreState = 1; // Reset to initial state
-        updateOreSprite();
         createLargeParticleEffect(mouseX, mouseY); // Add larger particle effect when rocks break
-    } else {
+    } else if (clickCount % 2 === 0) {
+        score += 10; // Add 10 points every 2 clicks
         oreState = (oreState % 5) + 1; // Cycle ore states from 1 to 5
         updateOreSprite();
-        createParticleEffect(mouseX, mouseY); // Add particle effect on each click
     }
 
     updateScoreDisplay();
+    createParticleEffect(mouseX, mouseY); // Add particle effect on each click
 }
 
 function updateOreSprite() {
