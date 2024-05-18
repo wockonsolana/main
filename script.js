@@ -16,27 +16,32 @@ function mineOre(event) {
     const mouseX = event.clientX;
     const mouseY = event.clientY;
 
-    if (clickCount % 10 === 0) {
+    // Update the score every 2 clicks
+    if (clickCount % 2 === 0) {
         score += 10;
-        scoreDisplay.textContent = `Score: ${score}`;
-        oreState++;
-        if (oreState > 5) {
-            oreState = 1; // Reset to initial state if reached the last state
-        }
+    }
+
+    // Add 60 points when the rock breaks (every 10 clicks)
+    if (clickCount % 10 === 0) {
+        score += 60;
+        oreState = 1; // Reset to initial state
         updateOreSprite();
         createLargeParticleEffect(mouseX, mouseY); // Add larger particle effect when rocks break
-    } else if (clickCount % 2 === 0) {
-        oreState++;
-        if (oreState > 5) {
-            oreState = 1; // Reset to initial state if reached the last state
-        }
+    } else {
+        oreState = (oreState % 5) + 1; // Cycle ore states from 1 to 5
         updateOreSprite();
         createParticleEffect(mouseX, mouseY); // Add particle effect on each click
     }
+
+    updateScoreDisplay();
 }
 
 function updateOreSprite() {
     ore.style.backgroundImage = `url('assets/ore${oreState}.png')`;
+}
+
+function updateScoreDisplay() {
+    scoreDisplay.textContent = `Score: ${score}`;
 }
 
 function createParticleEffect(x, y) {
