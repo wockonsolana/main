@@ -19,6 +19,7 @@ body {
     background-size: cover;
     cursor: pointer;
 }
+
 .particles, .large-particles {
     position: absolute;
     background-color: gray;
