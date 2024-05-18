@@ -40,25 +40,37 @@ function updateOreSprite() {
 }
 
 function createParticleEffect(x, y) {
-    const particles = document.createElement('div');
-    particles.classList.add('particles');
-    particles.style.left = `${x}px`;
-    particles.style.top = `${y}px`;
-    document.body.appendChild(particles);
-    particles.style.animation = 'particle-effect 1s ease-out forwards';
-    particles.addEventListener('animationend', () => {
-        document.body.removeChild(particles);
-    });
+    for (let i = 0; i < 10; i++) { // Create multiple particles for more effect
+        const particles = document.createElement('div');
+        particles.classList.add('particles');
+        particles.style.left = `${x}px`;
+        particles.style.top = `${y}px`;
+
+        // Add randomness to the particle movement
+        particles.style.setProperty('--random-x', `${Math.random() * 100 - 50}px`);
+        particles.style.setProperty('--random-y', `${Math.random() * 100 - 50}px`);
+
+        document.body.appendChild(particles);
+        particles.addEventListener('animationend', () => {
+            document.body.removeChild(particles);
+        });
+    }
 }
 
 function createLargeParticleEffect(x, y) {
-    const particles = document.createElement('div');
-    particles.classList.add('large-particles');
-    particles.style.left = `${x}px`;
-    particles.style.top = `${y}px`;
-    document.body.appendChild(particles);
-    particles.style.animation = 'large-particle-effect 1s ease-out forwards';
-    particles.addEventListener('animationend', () => {
-        document.body.removeChild(particles);
-    });
+    for (let i = 0; i < 5; i++) { // Create multiple larger particles for more effect
+        const particles = document.createElement('div');
+        particles.classList.add('large-particles');
+        particles.style.left = `${x}px`;
+        particles.style.top = `${y}px`;
+
+        // Add randomness to the large particle movement
+        particles.style.setProperty('--random-x', `${Math.random() * 200 - 100}px`);
+        particles.style.setProperty('--random-y', `${Math.random() * 200 - 100}px`);
+
+        document.body.appendChild(particles);
+        particles.addEventListener('animationend', () => {
+            document.body.removeChild(particles);
+        });
+    }
 }
