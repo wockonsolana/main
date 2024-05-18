@@ -20,11 +20,14 @@ function mineOre(event) {
     if (clickCount % 10 === 0) {
         score += 60; // Add 60 points when the rock breaks (every 10 clicks)
         oreState = 1; // Reset to initial state
-        createLargeParticleEffect(mouseX, mouseY); // Add larger particle effect when rocks break
-    } else if (clickCount % 2 === 0) {
-        score += 10; // Add 10 points every 2 clicks
-        oreState = (oreState % 5) + 1; // Cycle ore states from 1 to 5
         updateOreSprite();
+        createLargeParticleEffect(mouseX, mouseY); // Add larger particle effect when rocks break
+    } else {
+        if (clickCount % 2 === 0) {
+            score += 10; // Add 10 points every 2 clicks
+            oreState = (oreState % 5) + 1; // Cycle ore states from 1 to 5
+            updateOreSprite();
+        }
     }
 
     updateScoreDisplay();
