@@ -12,9 +12,16 @@ body {
     text-align: center;
 }
 
+.ore {
+    width: 150px;
+    height: 150px;
+    background-image: url('assets/ore1.png');
+    background-size: cover;
+    cursor: pointer;
+}
 .particles, .large-particles {
     position: absolute;
-    background-color: gray; /* Change particle color to gray */
+    background-color: gray;
     border-radius: 50%;
     pointer-events: none; /* Ensure the particles don't interfere with clicking */
 }
