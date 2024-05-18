@@ -5,6 +5,10 @@ let oreState = 1; // Initial ore state
 const ore = document.getElementById('ore');
 const scoreDisplay = document.getElementById('score');
 
+document.addEventListener('DOMContentLoaded', () => {
+    updateOreSprite(); // Initialize the ore image when the page loads
+});
+
 ore.addEventListener('click', mineOre);
 
 function mineOre(event) {
