@@ -7,8 +7,11 @@ const scoreDisplay = document.getElementById('score');
 
 ore.addEventListener('click', mineOre);
 
-function mineOre() {
+function mineOre(event) {
     clickCount++;
+    const mouseX = event.clientX;
+    const mouseY = event.clientY;
+
     if (clickCount % 10 === 0) {
         score += 10;
         scoreDisplay.textContent = `Score: ${score}`;
@@ -17,14 +20,14 @@ function mineOre() {
             oreState = 1; // Reset to initial state if reached the last state
         }
         updateOreSprite();
-        createLargeParticleEffect(); // Add larger particle effect when rocks break
+        createLargeParticleEffect(mouseX, mouseY); // Add larger particle effect when rocks break
     } else if (clickCount % 2 === 0) {
         oreState++;
         if (oreState > 5) {
             oreState = 1; // Reset to initial state if reached the last state
         }
         updateOreSprite();
-        createParticleEffect(); // Add particle effect on each click
+        createParticleEffect(mouseX, mouseY); // Add particle effect on each click
     }
 }
 
@@ -32,22 +35,26 @@ function updateOreSprite() {
     ore.style.backgroundImage = `url('ore${oreState}.png')`;
 }
 
-function createParticleEffect() {
+function createParticleEffect(x, y) {
     const particles = document.createElement('div');
     particles.classList.add('particles');
-    ore.appendChild(particles);
+    particles.style.left = `${x}px`;
+    particles.style.top = `${y}px`;
+    document.body.appendChild(particles);
     particles.style.animation = 'particle-effect 1s ease-out forwards';
     particles.addEventListener('animationend', () => {
-        ore.removeChild(particles);
+        document.body.removeChild(particles);
     });
 }
 
-function createLargeParticleEffect() {
+function createLargeParticleEffect(x, y) {
     const particles = document.createElement('div');
     particles.classList.add('large-particles');
-    ore.appendChild(particles);
+    particles.style.left = `${x}px`;
+    particles.style.top = `${y}px`;
+    document.body.appendChild(particles);
     particles.style.animation = 'large-particle-effect 1s ease-out forwards';
     particles.addEventListener('animationend', () => {
-        ore.removeChild(particles);
+        document.body.removeChild(particles);
     });
 }
