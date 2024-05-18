@@ -21,31 +21,41 @@ body {
 }
 .particles, .large-particles {
     position: absolute;
-    width: 5px; /* Or 20px for large particles */
-    height: 5px; /* Or 20px for large particles */
-    background-color: black;
+    background-color: yellow;
     border-radius: 50%;
     pointer-events: none; /* Ensure the particles don't interfere with clicking */
+}
+
+.particles {
+    width: 5px;
+    height: 5px;
+    animation: particle-effect 1s ease-out forwards;
+}
+
+.large-particles {
+    width: 20px;
+    height: 20px;
+    animation: large-particle-effect 1s ease-out forwards;
 }
 
 @keyframes particle-effect {
     0% {
         opacity: 1;
-        transform: scale(1);
+        transform: translate(0, 0) scale(1);
     }
     100% {
         opacity: 0;
-        transform: scale(2);
+        transform: translate(var(--random-x), var(--random-y)) scale(1.5);
     }
 }
 
 @keyframes large-particle-effect {
     0% {
         opacity: 1;
-        transform: scale(1);
+        transform: translate(0, 0) scale(1);
     }
     100% {
         opacity: 0;
-        transform: scale(4);
+        transform: translate(var(--random-x), var(--random-y)) scale(3);
     }
 }
