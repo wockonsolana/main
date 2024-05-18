@@ -7,6 +7,7 @@ const scoreDisplay = document.getElementById('score');
 
 document.addEventListener('DOMContentLoaded', () => {
     updateOreSprite(); // Initialize the ore image when the page loads
+    updateScoreDisplay(); // Initialize the score display
 });
 
 ore.addEventListener('click', mineOre);
@@ -16,27 +17,29 @@ function mineOre(event) {
     const mouseX = event.clientX;
     const mouseY = event.clientY;
 
-    if (clickCount % 10 === 0) {
-        score += 10;
-        scoreDisplay.textContent = `Score: ${score}`;
-        oreState++;
-        if (oreState > 5) {
-            oreState = 1; // Reset to initial state if reached the last state
-        }
-        updateOreSprite();
+    if (clickCount % 5 === 0) {
+        score += 60; // Add 60 points on every 5th click (rock break)
         createLargeParticleEffect(mouseX, mouseY); // Add larger particle effect when rocks break
-    } else if (clickCount % 2 === 0) {
-        oreState++;
-        if (oreState > 5) {
-            oreState = 1; // Reset to initial state if reached the last state
-        }
-        updateOreSprite();
+    } else {
+        score += 10; // Add 10 points on each click
         createParticleEffect(mouseX, mouseY); // Add particle effect on each click
     }
+
+    updateScoreDisplay();
+
+    oreState++;
+    if (oreState > 5) {
+        oreState = 1; // Reset to initial state if reached the last state
+    }
+    updateOreSprite();
 }
 
 function updateOreSprite() {
     ore.style.backgroundImage = `url('assets/ore${oreState}.png')`;
+}
+
+function updateScoreDisplay() {
+    scoreDisplay.textContent = `Score: ${score}`;
 }
 
 function createParticleEffect(x, y) {
