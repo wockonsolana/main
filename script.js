@@ -35,7 +35,7 @@ function mineOre(event) {
 }
 
 function updateOreSprite() {
-    ore.style.backgroundImage = `url('assets/wock1-${oreState}.png')`;
+    ore.style.backgroundImage = `url('assets/wock1-${oreState}.PNG')`;
 }
 
 function updateScoreDisplay() {
