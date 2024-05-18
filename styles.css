@@ -15,7 +15,7 @@ body {
 .ore {
     width: 150px;
     height: 150px;
-    background-image: url('ore1.png');
+    background-image: url('assets/ore1.png');
     background-size: cover;
     cursor: pointer;
 }
