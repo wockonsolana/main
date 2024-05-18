@@ -21,7 +21,7 @@ body {
 }
 .particles, .large-particles {
     position: absolute;
-    background-color: yellow;
+    background-color: gray;
     border-radius: 50%;
     pointer-events: none; /* Ensure the particles don't interfere with clicking */
 }
