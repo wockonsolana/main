@@ -18,6 +18,11 @@ body {
     background-image: url('assets/ore1.png');
     background-size: cover;
     cursor: pointer;
+    margin: auto; /* Center the image horizontally */
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .particles, .large-particles {
