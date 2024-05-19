@@ -27,11 +27,15 @@ function mineOre(event) {
         oreState = 1; // Reset to initial state
         updateOreSprite();
         createLargeParticleEffect(mouseX, mouseY); // Add larger particle effect when rocks break
-        // Add shake effect
+
+        // Add shake effect on the 10th click
         ore.classList.add('shake');
         setTimeout(() => {
             ore.classList.remove('shake');
         }, 150);
+
+        // Reset happiness after the first click cycle is complete
+        happiness = 0;
     } else {
         if (clickCount % 2 === 0) {
             score += 10; // Add 10 points every 2 clicks
