@@ -1,13 +1,18 @@
 let score = 0;
 let clickCount = 0;
 let oreState = 1; // Initial ore state
+const maxHappiness = 100;
+const happinessIncrement = 10;
+let happiness = 0;
 
 const ore = document.getElementById('ore');
 const scoreDisplay = document.getElementById('score');
+const happinessBar = document.getElementById('happiness-bar');
 
 document.addEventListener('DOMContentLoaded', () => {
     updateOreSprite(); // Initialize the ore image when the page loads
     updateScoreDisplay(); // Initialize the score display
+    updateHappinessBar(); // Initialize the happiness bar
 });
 
 ore.addEventListener('click', mineOre);
@@ -38,6 +43,7 @@ function mineOre(event) {
 
     updateScoreDisplay();
     createParticleEffect(mouseX, mouseY); // Add particle effect on each click
+    incrementHappiness();
 }
 
 function updateOreSprite() {
@@ -46,6 +52,15 @@ function updateOreSprite() {
 
 function updateScoreDisplay() {
     scoreDisplay.textContent = `Score: ${score}`;
+}
+
+function incrementHappiness() {
+    happiness = Math.min(maxHappiness, happiness + happinessIncrement);
+    updateHappinessBar();
+}
+
+function updateHappinessBar() {
+    happinessBar.style.width = `${happiness}%`;
 }
 
 function createParticleEffect(x, y) {
