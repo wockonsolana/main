@@ -7,11 +7,11 @@ function preloadImages(imagePaths) {
 
 // Call this function with the paths of the images you want to preload
 preloadImages([
-    'assets/wock1-1.png',
-    'assets/wock1-2.png',
-    'assets/wock1-3.png',
-    'assets/wock1-4.png',
-    'assets/wock1-5.png',
+    'assets/wock1-1.webp',
+    'assets/wock1-2.webp',
+    'assets/wock1-3.webp',
+    'assets/wock1-4.webp',
+    'assets/wock1-5.webp',
 ]);
 
 let score = 0;
