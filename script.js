@@ -1,3 +1,19 @@
+function preloadImages(imagePaths) {
+    imagePaths.forEach((path) => {
+        const img = new Image();
+        img.src = path;
+    });
+}
+
+// Call this function with the paths of the images you want to preload
+preloadImages([
+    'assets/wock1-1.png',
+    'assets/wock1-2.png',
+    'assets/wock1-3.png',
+    'assets/wock1-4.png',
+    'assets/wock1-5.png',
+]);
+
 let score = 0;
 let clickCount = 0;
 let oreState = 1; // Initial ore state
