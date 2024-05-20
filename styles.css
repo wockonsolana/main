@@ -81,8 +81,8 @@ h1 {
 }
 
 .social-media a img {
-    width: 50px; /* Increase the icon size */
-    height: 50px;
+    width: 100px; /* Increase the icon size */
+    height: 100px;
 }
 
 .particles, .large-particles {
