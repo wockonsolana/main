@@ -14,14 +14,11 @@ body {
     background-image: url('assets/wock-cover.webp');
     background-size: cover;
     background-position: center;
-    margin-top: 20px; /* Add space above the cover image */
-    margin-bottom: 20px; /* Add space below the cover image */
     padding: 10px 0; /* Add padding to ensure the image is not cut off */
 }
 
 .description {
     text-align: center;
-    margin-bottom: 20px;
 }
 
 .container {
@@ -75,8 +72,8 @@ h1 {
 }
 
 .social-media img {
-    width: 60px; /* Adjust size */
-    height: 60px; /* Adjust size */
+    width: 55px; /* Adjust size */
+    height: 55px; /* Adjust size */
 }
 
 /* Particle effects */
