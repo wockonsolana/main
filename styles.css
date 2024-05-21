@@ -65,14 +65,14 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 3px;
+    margin-top: 1px;
     overflow-x: auto; /* Enable horizontal scrolling on smaller screens */
     white-space: nowrap; /* Prevent wrapping to the next line */
 }
 
 .about-container {
     text-align: center;
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
 .about-button img {
