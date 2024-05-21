@@ -70,6 +70,17 @@ h1 {
     white-space: nowrap; /* Prevent wrapping to the next line */
 }
 
+.about-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.about-button img {
+    width: 80px; /* Adjust size */
+    height: 80px; /* Adjust size */
+    object-fit: cover; /* Maintain aspect ratio */
+}
+
 .social-media a {
     margin: 0 5px; /* Adjust spacing between icons */
 }
