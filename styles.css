@@ -59,17 +59,32 @@ h1 {
 
 .score {
     margin: 10px 0;
-}
-
-.social-media {
-    text-align: center;
+    
+}.social-media {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin-top: 20px;
+    overflow-x: auto; /* Enable horizontal scrolling on smaller screens */
+    white-space: nowrap; /* Prevent wrapping to the next line */
 }
 
 .social-media a {
-    display: inline-block;
-    margin: 0 10px;
+    margin: 0 10px; /* Adjust spacing between icons */
 }
+
+.social-media img {
+    max-width: 60px; /* Set maximum width for the icons */
+    height: auto; /* Maintain aspect ratio */
+}
+
+/* Adjust size of icons for smaller screens */
+@media screen and (max-width: 768px) {
+    .social-media img {
+        max-width: 40px; /* Decrease size for smaller screens */
+    }
+}
+
 
 .social-media img {
     width: 55px; /* Adjust size */
