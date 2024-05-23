@@ -12,11 +12,11 @@ body {
 
 .cover-image {
     width: 100%;
-    height: 20vh; /* Adjust height to ensure everything fits */
+    height: 30vh; /* Adjust height to ensure everything fits */
     background-image: url('assets/wock-cover.webp');
     background-size: cover;
     background-position: center;
-    padding: 10px 0;
+    padding: 5px 0;
 }
 
 .container {
@@ -33,8 +33,8 @@ body {
 }
 
 .ore {
-    width: 100px;
-    height: 100px;
+    width: 200px;
+    height: 200px;
     background-image: url('assets/wock1-1.webp');
     background-size: cover;
     cursor: pointer;
