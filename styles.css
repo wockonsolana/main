@@ -10,7 +10,7 @@ html, body {
 
 .cover-image {
     width: 100%;
-    height: 15vh; /* Adjusted height */
+    height: 15vh; /* Cover image height */
     background-image: url('assets/wock-cover.webp');
     background-size: cover;
     background-position: center;
@@ -20,12 +20,12 @@ html, body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 10vh; /* Adjusted height */
+    height: 10vh; /* About button container height */
 }
 
 .about-button img {
-    width: 50px; /* Adjust size */
-    height: 50px; /* Adjust size */
+    width: 50px; /* About button size */
+    height: 50px; /* About button size */
     object-fit: cover; /* Maintain aspect ratio */
 }
 
@@ -35,7 +35,7 @@ html, body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 50vh; /* Adjusted height */
+    height: 40vh; /* Main game container height */
 }
 
 .instructions {
@@ -43,8 +43,8 @@ html, body {
 }
 
 .ore {
-    width: 80px;
-    height: 80px;
+    width: 160px; /* Increase ore size */
+    height: 160px; /* Increase ore size */
     background-image: url('assets/wock1-1.webp');
     background-size: cover;
     cursor: pointer;
@@ -54,8 +54,8 @@ html, body {
 }
 
 .happiness-container {
-    width: 80px;
-    height: 10px;
+    width: 160px; /* Increase width */
+    height: 20px; /* Increase height */
     background-color: #e0e0e0;
     border: 1px solid #ccc;
     margin: 10px auto;
@@ -75,18 +75,18 @@ html, body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 10vh; /* Adjusted height */
+    height: 10vh; /* Social media container height */
     overflow-x: auto; /* Enable horizontal scrolling on smaller screens */
     white-space: nowrap; /* Prevent wrapping to the next line */
 }
 
 .social-media a {
-    margin: 0 5px; /* Adjust spacing between icons */
+    margin: 0 5px; /* Spacing between icons */
 }
 
 .social-media img {
-    max-width: 30px; /* Set maximum width for the icons */
-    max-height: 30px; /* Set maximum width for the icons */
+    max-width: 30px; /* Social media icon size */
+    max-height: 30px; /* Social media icon size */
     height: auto; /* Maintain aspect ratio */
 }
 
@@ -94,7 +94,7 @@ html, body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 5vh; /* Adjusted height */
+    height: 5vh; /* Contract container height */
 }
 
 .contract p {
@@ -104,22 +104,23 @@ html, body {
 /* Adjust size of elements for smaller screens */
 @media screen and (max-width: 768px) {
     .cover-image {
-        height: 10vh; /* Adjust cover image height for smaller screens */
+        height: 10vh; /* Cover image height for smaller screens */
     }
     .ore {
-        width: 60px; /* Adjust size */
-        height: 60px; /* Adjust size */
+        width: 120px; /* Ore size for smaller screens */
+        height: 120px; /* Ore size for smaller screens */
     }
     .happiness-container {
-        width: 60px; /* Adjust size */
+        width: 120px; /* Happiness container size for smaller screens */
+        height: 15px; /* Happiness container height for smaller screens */
     }
     .about-button img {
-        width: 40px; /* Adjust size */
-        height: 40px; /* Adjust size */
+        width: 40px; /* About button size for smaller screens */
+        height: 40px; /* About button size for smaller screens */
     }
     .social-media img {
-        max-width: 25px; /* Decrease size for smaller screens */
-        max-height: 25px; /* Set maximum width for the icons */
+        max-width: 25px; /* Social media icon size for smaller screens */
+        max-height: 25px; /* Social media icon size for smaller screens */
     }
 }
 
