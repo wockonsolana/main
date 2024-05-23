@@ -1,61 +1,52 @@
-html, body {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    height: 100%;
-    overflow: hidden; /* Prevent scrolling */
+body {
     font-family: 'Indie Flower', cursive;
     background-color: #f0f0f0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    padding: 0;
 }
 
 .cover-image {
     width: 100%;
-    height: 20vh; /* Adjust cover image height */
+    height: 100vh; /* Adjusted to fill the height of the viewport */
     background-image: url('assets/wock-cover.webp');
     background-size: cover;
     background-position: center;
+    padding: 10px 0; /* Add padding to ensure the image is not cut off */
+    margin-bottom: 20px;
 }
 
-.about-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 10vh; /* About button container height */
-}
-
-.about-button img {
-    width: 50px; /* About button size */
-    height: 50px; /* About button size */
-    object-fit: cover; /* Maintain aspect ratio */
+.description {
+    text-align: center;
 }
 
 .container {
-    flex-grow: 1; /* Allow the container to grow and shrink as needed */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 40vh; /* Main game container height */
+    text-align: center;
 }
 
-.instructions {
-    margin-bottom: 10px;
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
 }
 
 .ore {
-    width: 160px; /* Increase ore size */
-    height: 160px; /* Increase ore size */
+    width: 40%; /* Adjusted to fill around 40% of the screen */
+    height: auto; /* Let the height adjust automatically */
     background-image: url('assets/wock1-1.webp');
     background-size: cover;
     cursor: pointer;
+    margin: auto;
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .happiness-container {
-    width: 160px; /* Increase width */
-    height: 20px; /* Increase height */
+    width: 150px;
+    height: 20px;
     background-color: #e0e0e0;
     border: 1px solid #ccc;
     margin: 10px auto;
@@ -69,59 +60,37 @@ html, body {
 
 .score {
     margin: 10px 0;
-}
-
-.social-media {
+    
+}.social-media {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 10vh; /* Social media container height */
+    margin-top: 1px;
     overflow-x: auto; /* Enable horizontal scrolling on smaller screens */
     white-space: nowrap; /* Prevent wrapping to the next line */
 }
 
-.social-media a {
-    margin: 0 5px; /* Spacing between icons */
-}
-
-.social-media img {
-    max-width: 30px; /* Social media icon size */
-    max-height: 30px; /* Social media icon size */
-    height: auto; /* Maintain aspect ratio */
-}
-
-.contract {
+.about-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 5vh; /* Contract container height */
+    height: 8vh; /* Reduce height to minimize white space */
 }
 
-.contract p {
-    margin: 0;
+.about-button img {
+    width: 60px; /* Increase about button size */
+    height: 60px; /* Increase about button size */
+    object-fit: cover; /* Maintain aspect ratio */
 }
 
-/* Adjust size of elements for smaller screens */
-@media screen and (max-width: 768px) {
-    .cover-image {
-        height: 15vh; /* Cover image height for smaller screens */
-    }
-    .ore {
-        width: 120px; /* Ore size for smaller screens */
-        height: 120px; /* Ore size for smaller screens */
-    }
-    .happiness-container {
-        width: 120px; /* Happiness container size for smaller screens */
-        height: 15px; /* Happiness container height for smaller screens */
-    }
-    .about-button img {
-        width: 40px; /* About button size for smaller screens */
-        height: 40px; /* About button size for smaller screens */
-    }
-    .social-media img {
-        max-width: 25px; /* Social media icon size for smaller screens */
-        max-height: 25px; /* Social media icon size for smaller screens */
-    }
+.social-media a {
+    margin: 0 10px; /* Increase spacing between icons */
+}
+
+.social-media img {
+    max-width: 50px; /* Increase social media icon size */
+    max-height: 50px; /* Increase social media icon size */
+    height: auto; /* Maintain aspect ratio */
 }
 
 /* Particle effects */
