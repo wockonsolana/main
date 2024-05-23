@@ -61,10 +61,7 @@ h1 {
 }
 
 .score {
-    margin: 10px 0;
-    display: block;
-    margin: 0 auto; /* Center horizontally */
-    text-align: center; /* Align text within the elements */
+    margin-top: 10px;
 }
 
 .mute-button {
@@ -72,17 +69,6 @@ h1 {
     background-color: black;
     color: white;
     border: none;
-    padding: 5px 10px;
-    cursor: pointer;
-    margin-top: 10px; /* Adjust margin-top as needed */
-    display: block;
-    margin: 0 auto; /* Center horizontally */
-    text-align: center; /* Align text within the elements */
-}
-
-.mute-button:hover {
-    background-color: white;
-    color: black;
 }
 
 .social-media {
