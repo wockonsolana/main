@@ -7,16 +7,15 @@ body {
     margin: 0;
     padding: 0;
     overflow: hidden; /* Disable scrolling */
-    height: 120vh; /* Full viewport height */
+    height: 100vh; /* Full viewport height */
 }
 
 .cover-image {
-    width: 75%;
-    height: 25vh; /* Adjust height to ensure everything fits */
+    width: 80%;
+    height: 20vh; /* Adjust height to ensure everything fits */
     background-image: url('assets/wock-cover.webp');
     background-size: cover;
     background-position: center;
-    padding: 5px 0;
 }
 
 .container {
@@ -29,7 +28,7 @@ body {
 }
 
 .instructions {
-    margin-bottom: 5px;
+    margin-bottom: 10px;
 }
 
 .ore {
@@ -38,7 +37,6 @@ body {
     background-image: url('assets/wock1-1.webp');
     background-size: cover;
     cursor: pointer;
-    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -95,7 +93,7 @@ body {
 /* Adjust size of icons for smaller screens */
 @media screen and (max-width: 768px) {
     .cover-image {
-        height: 10vh; /* Adjust cover image height for smaller screens */
+        height: 15vh; /* Adjust cover image height for smaller screens */
     }
     .ore {
         width: 80px; /* Adjust size */
