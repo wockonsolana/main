@@ -123,24 +123,4 @@ function createLargeParticleEffect(x, y) {
 }
 
 function setupMuteButton() {
-    let isMuted = false;
-    const muteButton = document.getElementById('mute-button');
-
-    muteButton.addEventListener('click', () => {
-        isMuted = !isMuted;
-        if (isMuted) {
-            // Mute sounds
-            clickSound.volume = 0;
-            nextSound.volume = 0;
-            muteButton.textContent = 'Unmute';
-        } else {
-            // Unmute sounds
-            clickSound.volume = 1;
-            nextSound.volume = 1;
-            muteButton.textContent = 'Mute';
-        }
-    });
-}
-
-// Call the function to set up the mute button functionality
-setupMuteButton();
+    let
