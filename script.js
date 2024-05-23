@@ -87,7 +87,7 @@ function updateHappinessBar() {
 }
 
 function createParticleEffect(x, y) {
-    for (let i = 0; i < 10; i++) { // Create multiple particles for more effect
+    for (let i = 0; i < 10; i++) { // Create multiple small particles for more effect
         const particles = document.createElement('div');
         particles.classList.add('particles');
         particles.style.left = `${x}px`;
@@ -123,4 +123,24 @@ function createLargeParticleEffect(x, y) {
 }
 
 function setupMuteButton() {
-    let
+    let isMuted = false;
+    const muteButton = document.getElementById('mute-button');
+
+    muteButton.addEventListener('click', () => {
+        isMuted = !isMuted;
+        if (isMuted) {
+            // Mute sounds
+            clickSound.volume = 0;
+            nextSound.volume = 0;
+            muteButton.textContent = 'Unmute';
+        } else {
+            // Unmute sounds
+            clickSound.volume = 1;
+            nextSound.volume = 1;
+            muteButton.textContent = 'Mute';
+        }
+    });
+}
+
+// Call the function to set up the mute button functionality
+setupMuteButton();
