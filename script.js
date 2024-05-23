@@ -12,6 +12,8 @@ preloadImages([
     'assets/wock1-3.webp',
     'assets/wock1-4.webp',
     'assets/wock1-5.webp',
+    'assets/click-effect.wav',
+    'assets/next-effect.wav',
 ]);
 
 let score = 0;
@@ -24,8 +26,8 @@ let happiness = 0;
 const ore = document.getElementById('ore');
 const scoreDisplay = document.getElementById('score');
 const happinessBar = document.getElementById('happiness-bar');
-const clickSound = new Audio('clickSound');
-const nextSound = new Audio('nextSound');
+const clickSound = document.getElementById('clickSound');
+const nextSound = document.getElementById('nextSound');
 
 document.addEventListener('DOMContentLoaded', () => {
     updateOreSprite(); // Initialize the ore image when the page loads
