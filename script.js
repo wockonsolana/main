@@ -146,3 +146,4 @@ function createLargeParticleEffect(x, y) {
             document.body.removeChild(particles);
         });
     }
+}
