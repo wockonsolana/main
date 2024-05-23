@@ -6,38 +6,39 @@ body {
     align-items: center;
     margin: 0;
     padding: 0;
+    overflow: hidden; /* Disable scrolling */
+    height: 100vh; /* Full viewport height */
 }
 
 .cover-image {
     width: 100%;
-    height: 200px;
+    height: 15vh; /* Adjust height to ensure everything fits */
     background-image: url('assets/wock-cover.webp');
     background-size: cover;
     background-position: center;
-    padding: 10px 0; /* Add padding to ensure the image is not cut off */
-    margin-bottom: 20px;
-}
-
-.description {
-    text-align: center;
+    padding: 10px 0;
+    margin-bottom: 10px;
 }
 
 .container {
     text-align: center;
+    flex-grow: 1; /* Allow the container to grow and shrink as needed */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-h1 {
-    text-align: center;
-    margin-bottom: 20px;
+.instructions {
+    margin-bottom: 10px;
 }
 
 .ore {
-    width: 150px;
-    height: 150px;
+    width: 100px;
+    height: 100px;
     background-image: url('assets/wock1-1.webp');
     background-size: cover;
     cursor: pointer;
-    margin: auto;
     position: relative;
     display: flex;
     justify-content: center;
@@ -45,7 +46,7 @@ h1 {
 }
 
 .happiness-container {
-    width: 150px;
+    width: 100px;
     height: 20px;
     background-color: #e0e0e0;
     border: 1px solid #ccc;
@@ -60,14 +61,6 @@ h1 {
 
 .score {
     margin: 10px 0;
-    
-}.social-media {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 1px;
-    overflow-x: auto; /* Enable horizontal scrolling on smaller screens */
-    white-space: nowrap; /* Prevent wrapping to the next line */
 }
 
 .about-container {
@@ -76,9 +69,18 @@ h1 {
 }
 
 .about-button img {
-    width: 80px; /* Adjust size */
-    height: 80px; /* Adjust size */
+    width: 60px; /* Adjust size */
+    height: 60px; /* Adjust size */
     object-fit: cover; /* Maintain aspect ratio */
+}
+
+.social-media {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    overflow-x: auto; /* Enable horizontal scrolling on smaller screens */
+    white-space: nowrap; /* Prevent wrapping to the next line */
 }
 
 .social-media a {
@@ -86,23 +88,31 @@ h1 {
 }
 
 .social-media img {
-    max-width: 60px; /* Set maximum width for the icons */
-    max-height: 60px; /* Set maximum width for the icons */
+    max-width: 40px; /* Set maximum width for the icons */
+    max-height: 40px; /* Set maximum width for the icons */
     height: auto; /* Maintain aspect ratio */
 }
 
 /* Adjust size of icons for smaller screens */
 @media screen and (max-width: 768px) {
-    .social-media img {
-        max-width: 40px; /* Decrease size for smaller screens */
-        max-height: 40px; /* Set maximum width for the icons */
+    .cover-image {
+        height: 10vh; /* Adjust cover image height for smaller screens */
     }
-}
-
-
-.social-media img {
-    width: 55px; /* Adjust size */
-    height: 55px; /* Adjust size */
+    .ore {
+        width: 80px; /* Adjust size */
+        height: 80px; /* Adjust size */
+    }
+    .happiness-container {
+        width: 80px; /* Adjust size */
+    }
+    .about-button img {
+        width: 50px; /* Adjust size */
+        height: 50px; /* Adjust size */
+    }
+    .social-media img {
+        max-width: 30px; /* Decrease size for smaller screens */
+        max-height: 30px; /* Set maximum width for the icons */
+    }
 }
 
 /* Particle effects */
