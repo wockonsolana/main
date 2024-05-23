@@ -65,8 +65,8 @@ h1 {
 }
 
 .mute-container {
-    text-align: center;
-    margin-top: 20px;
+    display: inline-block;
+    margin-left: 20px;
 }
 
 .mute-button {
@@ -74,7 +74,7 @@ h1 {
     background-color: black;
     color: white;
     border: none;
-    padding: 10px 20px;
+    padding: 5px 5px;
     cursor: pointer;
     border-radius: 5px;
     transition: background-color 0.3s, color 0.3s;
@@ -84,6 +84,7 @@ h1 {
     background-color: white;
     color: black;
 }
+
 
 
 .social-media {
