@@ -24,6 +24,8 @@ body {
 
 .container {
     text-align: center;
+    width: 40%; /* Adjusted to fill around 40% of the screen */
+    margin-bottom: 20px;
 }
 
 h1 {
@@ -32,7 +34,7 @@ h1 {
 }
 
 .ore {
-    width: 40%; /* Adjusted to fill around 40% of the screen */
+    width: 100%; /* Adjusted to fill the container */
     height: auto; /* Let the height adjust automatically */
     background-image: url('assets/wock1-1.webp');
     background-size: cover;
@@ -60,21 +62,20 @@ h1 {
 
 .score {
     margin: 10px 0;
-    
-}.social-media {
+}
+
+.social-media {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 1px;
-    overflow-x: auto; /* Enable horizontal scrolling on smaller screens */
-    white-space: nowrap; /* Prevent wrapping to the next line */
+    margin-top: 10px; /* Adjusted margin for social media icons */
 }
 
 .about-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 8vh; /* Reduce height to minimize white space */
+    margin-top: 10px;
 }
 
 .about-button img {
