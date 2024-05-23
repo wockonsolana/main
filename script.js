@@ -14,10 +14,6 @@ preloadImages([
     'assets/wock1-5.webp',
 ]);
 
-// Call the function to set up the mute button functionality
-setupMuteButton();
-
-
 let score = 0;
 let clickCount = 0;
 let oreState = 1; // Initial ore state
