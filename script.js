@@ -24,8 +24,8 @@ let happiness = 0;
 const ore = document.getElementById('ore');
 const scoreDisplay = document.getElementById('score');
 const happinessBar = document.getElementById('happiness-bar');
-const clickSound = new Audio('click-effect.wav');
-const nextSound = new Audio('next-effect.wav');
+const clickSound = new Audio('clickSound');
+const nextSound = new Audio('nextSound');
 
 document.addEventListener('DOMContentLoaded', () => {
     updateOreSprite(); // Initialize the ore image when the page loads
