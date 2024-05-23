@@ -24,6 +24,8 @@ let happiness = 0;
 const ore = document.getElementById('ore');
 const scoreDisplay = document.getElementById('score');
 const happinessBar = document.getElementById('happiness-bar');
+const clickSound = document.getElementById('click-sound');
+const nextSound = document.getElementById('next-sound');
 
 document.addEventListener('DOMContentLoaded', () => {
     updateOreSprite(); // Initialize the ore image when the page loads
@@ -52,12 +54,14 @@ function mineOre(event) {
 
         // Reset happiness after the first click cycle is complete
         happiness = 0;
+        nextSound.play(); // Play sound effect for breaking the rock
     } else {
         if (clickCount % 2 === 0) {
             score += 10; // Add 10 points every 2 clicks
             oreState = (oreState % 5) + 1; // Cycle ore states from 1 to 5
             updateOreSprite();
         }
+        clickSound.play(); // Play sound effect for each click
     }
 
     updateScoreDisplay();
