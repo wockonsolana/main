@@ -64,20 +64,14 @@ h1 {
     margin: 10px 0;
 }
 
-.mute-container {
-    display: inline-block;
-    margin-left: 20px;
-}
-
 .mute-button {
     font-family: 'Indie Flower', cursive;
     background-color: black;
     color: white;
     border: none;
-    padding: 5px 5px;
+    padding: 5px 10px;
     cursor: pointer;
-    border-radius: 5px;
-    transition: background-color 0.3s, color 0.3s;
+    margin-top: 10px; /* Adjust margin-top as needed */
 }
 
 .mute-button:hover {
