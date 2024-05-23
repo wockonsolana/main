@@ -14,6 +14,32 @@ preloadImages([
     'assets/wock1-5.webp',
 ]);
 
+function setupMuteButton() {
+    let isMuted = false;
+    const muteButton = document.getElementById('mute-button');
+    const clickSound = document.getElementById('click-sound');
+    const nextEffectSound = document.getElementById('next-effect-sound');
+
+    muteButton.addEventListener('click', () => {
+        isMuted = !isMuted;
+        if (isMuted) {
+            // Mute sounds
+            clickSound.muted = true;
+            nextEffectSound.muted = true;
+            muteButton.textContent = 'Unmute';
+        } else {
+            // Unmute sounds
+            clickSound.muted = false;
+            nextEffectSound.muted = false;
+            muteButton.textContent = 'Mute';
+        }
+    });
+}
+
+// Call the function to set up the mute button functionality
+setupMuteButton();
+
+
 let score = 0;
 let clickCount = 0;
 let oreState = 1; // Initial ore state
@@ -120,4 +146,3 @@ function createLargeParticleEffect(x, y) {
             document.body.removeChild(particles);
         });
     }
-}
