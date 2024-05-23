@@ -10,7 +10,7 @@ html, body {
 
 .cover-image {
     width: 100%;
-    height: 15vh; /* Cover image height */
+    height: 20vh; /* Adjust cover image height */
     background-image: url('assets/wock-cover.webp');
     background-size: cover;
     background-position: center;
@@ -104,7 +104,7 @@ html, body {
 /* Adjust size of elements for smaller screens */
 @media screen and (max-width: 768px) {
     .cover-image {
-        height: 10vh; /* Cover image height for smaller screens */
+        height: 15vh; /* Cover image height for smaller screens */
     }
     .ore {
         width: 120px; /* Ore size for smaller screens */
