@@ -24,8 +24,8 @@ let happiness = 0;
 const ore = document.getElementById('ore');
 const scoreDisplay = document.getElementById('score');
 const happinessBar = document.getElementById('happiness-bar');
-const clickSound = document.getElementById('click-effect');
-const nextSound = document.getElementById('next-effect');
+const clickSound = new Audio('click-effect.wav');
+const nextSound = new Audio('next-effect.wav');
 
 document.addEventListener('DOMContentLoaded', () => {
     updateOreSprite(); // Initialize the ore image when the page loads
@@ -125,20 +125,18 @@ function createLargeParticleEffect(x, y) {
 function setupMuteButton() {
     let isMuted = false;
     const muteButton = document.getElementById('mute-button');
-    const clickSound = document.getElementById('click-effect');
-    const nextEffectSound = document.getElementById('next-effect');
 
     muteButton.addEventListener('click', () => {
         isMuted = !isMuted;
         if (isMuted) {
             // Mute sounds
-            clickSound.muted = true;
-            nextEffectSound.muted = true;
+            clickSound.volume = 0;
+            nextSound.volume = 0;
             muteButton.textContent = 'Unmute';
         } else {
             // Unmute sounds
-            clickSound.muted = false;
-            nextEffectSound.muted = false;
+            clickSound.volume = 1;
+            nextSound.volume = 1;
             muteButton.textContent = 'Mute';
         }
     });
