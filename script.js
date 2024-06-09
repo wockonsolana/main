@@ -101,7 +101,7 @@ function updateOreSprite() {
 }
 
 function updateScoreDisplay() {
-    scoreDisplay.textContent = `Score: ${score}`;
+    score.textContent = `Score: ${score}`;
 }
 
 function incrementHappiness() {
