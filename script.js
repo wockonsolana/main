@@ -19,15 +19,13 @@ let unlockedCharacters = new Array(characters.length).fill(false);
 unlockedCharacters[0] = true; // The first character is always unlocked
 
 document.addEventListener('DOMContentLoaded', () => {
+    const ore = document.getElementById('ore'); // Get the rock element
+    ore.addEventListener('click', mineOre); // Attach mineOre function to the rock's click event
     updateOreSprite(); // Initialize the ore image when the page loads
     updateScoreDisplay(); // Initialize the score display
     updateHappinessBar(); // Initialize the happiness bar
     loadProgress(); // Load saved progress if any
     updateCharacterUnlockDisplay(); // Initialize the character unlock display
-    // Add event listener to the ore element to trigger the mineOre function on click
-    const ore = document.getElementById('ore');
-    ore.addEventListener('click', mineOre);
-
 });
 
 function preloadImages(imagePaths) {
@@ -82,6 +80,7 @@ function mineOre(event) {
     saveProgress(); // Save progress on each click
 }
 
+// Remaining functions remain unchanged
 
 function checkForNewCharacter() {
     for (let i = currentCharacter + 1; i < unlockThresholds.length; i++) {
