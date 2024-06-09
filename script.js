@@ -24,6 +24,10 @@ document.addEventListener('DOMContentLoaded', () => {
     updateHappinessBar(); // Initialize the happiness bar
     loadProgress(); // Load saved progress if any
     updateCharacterUnlockDisplay(); // Initialize the character unlock display
+    // Add event listener to the ore element to trigger the mineOre function on click
+    const ore = document.getElementById('ore');
+    ore.addEventListener('click', mineOre);
+
 });
 
 function preloadImages(imagePaths) {
