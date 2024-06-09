@@ -1,3 +1,31 @@
+const characters = [
+    ['assets/wock1-1.webp', 'assets/wock1-2.webp', 'assets/wock1-3.webp', 'assets/wock1-4.webp', 'assets/wock1-5.webp'],
+    ['assets/wock2-1.webp', 'assets/wock2-2.webp', 'assets/wock2-3.webp', 'assets/wock2-4.webp', 'assets/wock2-5.webp'],
+    ['assets/wock3-1.webp', 'assets/wock3-2.webp', 'assets/wock3-3.webp', 'assets/wock3-4.webp', 'assets/wock3-5.webp'],
+    ['assets/wock4-1.webp', 'assets/wock4-2.webp', 'assets/wock4-3.webp', 'assets/wock4-4.webp', 'assets/wock4-5.webp'],
+    ['assets/wock5-1.webp', 'assets/wock5-2.webp', 'assets/wock5-3.webp', 'assets/wock5-4.webp', 'assets/wock5-5.webp'],
+    ['assets/wock6-1.webp', 'assets/wock6-2.webp', 'assets/wock6-3.webp', 'assets/wock6-4.webp', 'assets/wock6-5.webp'],
+    ['assets/wock7-1.webp', 'assets/wock7-2.webp', 'assets/wock7-3.webp', 'assets/wock7-4.webp', 'assets/wock7-5.webp'],
+    ['assets/wock8-1.webp', 'assets/wock8-2.webp', 'assets/wock8-3.webp', 'assets/wock8-4.webp', 'assets/wock8-5.webp'],
+    ['assets/wock9-1.webp', 'assets/wock9-2.webp', 'assets/wock9-3.webp', 'assets/wock9-4.webp', 'assets/wock9-5.webp'],
+    ['assets/wock10-1.webp', 'assets/wock10-2.webp', 'assets/wock10-3.webp', 'assets/wock10-4.webp', 'assets/wock10-5.webp']
+];
+
+const unlockThresholds = [0, 10, 100, 500, 1000, 2000, 3500, 10000, 15000, 100000];
+
+let currentCharacter = 0;
+let resetCount = 0; // Track the number of times the rock resets
+let unlockedCharacters = new Array(characters.length).fill(false);
+unlockedCharacters[0] = true; // The first character is always unlocked
+
+document.addEventListener('DOMContentLoaded', () => {
+    updateOreSprite(); // Initialize the ore image when the page loads
+    updateScoreDisplay(); // Initialize the score display
+    updateHappinessBar(); // Initialize the happiness bar
+    loadProgress(); // Load saved progress if any
+    updateCharacterUnlockDisplay(); // Initialize the character unlock display
+});
+
 function preloadImages(imagePaths) {
     imagePaths.forEach((path) => {
         const img = new Image();
@@ -5,38 +33,12 @@ function preloadImages(imagePaths) {
     });
 }
 
-// Call this function with the paths of the images you want to preload
+// Preload the first two characters
 preloadImages([
-    'assets/wock1-1.webp',
-    'assets/wock1-2.webp',
-    'assets/wock1-3.webp',
-    'assets/wock1-4.webp',
-    'assets/wock1-5.webp',
-    'assets/click-effect.wav',
-    'assets/next-effect.wav',
+    'assets/wock1-1.webp', 'assets/wock1-2.webp', 'assets/wock1-3.webp', 'assets/wock1-4.webp', 'assets/wock1-5.webp',
+    'assets/wock2-1.webp', 'assets/wock2-2.webp', 'assets/wock2-3.webp', 'assets/wock2-4.webp', 'assets/wock2-5.webp',
+    'assets/click-effect.wav', 'assets/next-effect.wav'
 ]);
-
-let score = 0;
-let clickCount = 0;
-let oreState = 1; // Initial ore state
-const maxHappiness = 100;
-const happinessIncrement = 10;
-let happiness = 0;
-
-const ore = document.getElementById('ore');
-const scoreDisplay = document.getElementById('score');
-const happinessBar = document.getElementById('happiness-bar');
-const clickSound = document.getElementById('clickSound');
-const nextSound = document.getElementById('nextSound');
-
-document.addEventListener('DOMContentLoaded', () => {
-    loadScore(); // Load the score from localStorage when the page loads
-    updateOreSprite(); // Initialize the ore image when the page loads
-    updateScoreDisplay(); // Initialize the score display
-    updateHappinessBar(); // Initialize the happiness bar
-});
-
-ore.addEventListener('click', mineOre);
 
 function mineOre(event) {
     clickCount++;
@@ -57,42 +59,46 @@ function mineOre(event) {
 
         // Reset happiness after the first click cycle is complete
         happiness = 0;
-        nextSound.currentTime = 0; // Reset next sound to the start
         nextSound.play(); // Play sound effect for breaking the rock
+
+        // Increment the reset count and check for character unlocks
+        resetCount++;
+        checkForNewCharacter();
     } else {
         if (clickCount % 2 === 0) {
             score += 10; // Add 10 points every 2 clicks
             oreState = (oreState % 5) + 1; // Cycle ore states from 1 to 5
             updateOreSprite();
         }
-        clickSound.currentTime = 0; // Reset click sound to the start
         clickSound.play(); // Play sound effect for each click
     }
 
     updateScoreDisplay();
     createParticleEffect(mouseX, mouseY); // Add particle effect on each click
     incrementHappiness();
+    saveProgress(); // Save progress on each click
+}
+
+function checkForNewCharacter() {
+    for (let i = currentCharacter + 1; i < unlockThresholds.length; i++) {
+        if (resetCount >= unlockThresholds[i] && !unlockedCharacters[i]) {
+            unlockedCharacters[i] = true;
+            currentCharacter = i;
+            oreState = 1;
+            updateOreSprite();
+            alert(`You unlocked character ${i + 1}!`);
+            updateCharacterUnlockDisplay();
+            break;
+        }
+    }
 }
 
 function updateOreSprite() {
-    ore.style.backgroundImage = `url('assets/wock1-${oreState}.webp')`;
+    ore.style.backgroundImage = `url('${characters[currentCharacter][oreState - 1]}')`;
 }
 
 function updateScoreDisplay() {
     scoreDisplay.textContent = `Score: ${score}`;
-    saveScore(); // Save the score whenever it updates
-}
-
-function saveScore() {
-    localStorage.setItem('score', score);
-}
-
-function loadScore() {
-    const savedScore = localStorage.getItem('score');
-    if (savedScore !== null) {
-        score = parseInt(savedScore, 10);
-        updateScoreDisplay();
-    }
 }
 
 function incrementHappiness() {
@@ -164,3 +170,36 @@ function setupMuteButton() {
 
 // Call the function to set up the mute button functionality
 setupMuteButton();
+
+function saveProgress() {
+    const progress = {
+        score,
+        happiness,
+        currentCharacter,
+        resetCount,
+        unlockedCharacters
+    };
+    document.cookie = `progress=${JSON.stringify(progress)}; path=/;`;
+}
+
+function loadProgress() {
+    const match = document.cookie.match(new RegExp('(^| )progress=([^;]+)'));
+    if (match) {
+        const progress = JSON.parse(match[2]);
+        score = progress.score;
+        happiness = progress.happiness;
+        currentCharacter = progress.currentCharacter;
+        resetCount = progress.resetCount;
+        unlockedCharacters = progress.unlockedCharacters;
+        updateOreSprite();
+        updateScoreDisplay();
+        updateHappinessBar();
+        updateCharacterUnlockDisplay();
+    }
+}
+
+function updateCharacterUnlockDisplay() {
+    const unlockedCount = unlockedCharacters.filter(Boolean).length;
+    document.getElementById('character-unlock-display').textContent = `Characters Unlocked: ${unlockedCount}/10`;
+}
+``
