@@ -14,6 +14,8 @@ const characters = [
 const unlockThresholds = [0, 10, 100, 500, 1000, 2000, 3500, 10000, 15000, 100000];
 
 let currentCharacter = 0;
+let clickCount = 0;
+let oreState = 0;
 let resetCount = 0; // Track the number of times the rock resets
 let unlockedCharacters = new Array(characters.length).fill(false);
 unlockedCharacters[0] = true; // The first character is always unlocked
