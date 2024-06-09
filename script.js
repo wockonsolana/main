@@ -110,7 +110,7 @@ function incrementHappiness() {
 }
 
 function updateHappinessBar() {
-    happiness-bar.style.width = `${happiness}%`;
+    happinessBar.style.width = `${happiness}%`;
 }
 
 function createParticleEffect(x, y) {
