@@ -48,7 +48,6 @@ function mineOre(event) {
     if (clickCount % 10 === 0) {
         score += 60; // Add 60 points when the rock breaks (every 10 clicks)
         oreState = 1; // Reset to initial state
-        updateOreSprite();
         createLargeParticleEffect(mouseX, mouseY); // Add larger particle effect when rocks break
 
         // Add shake effect on the 10th click
@@ -68,16 +67,17 @@ function mineOre(event) {
         if (clickCount % 2 === 0) {
             score += 10; // Add 10 points every 2 clicks
             oreState = (oreState % 5) + 1; // Cycle ore states from 1 to 5
-            updateOreSprite();
         }
         clickSound.play(); // Play sound effect for each click
     }
 
+    updateOreSprite();
     updateScoreDisplay();
     createParticleEffect(mouseX, mouseY); // Add particle effect on each click
     incrementHappiness();
     saveProgress(); // Save progress on each click
 }
+
 
 function checkForNewCharacter() {
     for (let i = currentCharacter + 1; i < unlockThresholds.length; i++) {
