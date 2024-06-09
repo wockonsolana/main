@@ -82,8 +82,6 @@ function mineOre(event) {
     saveProgress(); // Save progress on each click
 }
 
-// Remaining functions remain unchanged
-
 function checkForNewCharacter() {
     for (let i = currentCharacter + 1; i < unlockThresholds.length; i++) {
         if (resetCount >= unlockThresholds[i] && !unlockedCharacters[i]) {
@@ -207,3 +205,5 @@ function updateCharacterUnlockDisplay() {
     const unlockedCount = unlockedCharacters.filter(Boolean).length;
     document.getElementById('character-unlock-display').textContent = `Characters Unlocked: ${unlockedCount}/10`;
 }
+
+       
