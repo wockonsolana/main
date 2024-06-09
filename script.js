@@ -206,4 +206,3 @@ function updateCharacterUnlockDisplay() {
     document.getElementById('character-unlock-display').textContent = `Characters Unlocked: ${unlockedCount}/10`;
 }
 
-       
