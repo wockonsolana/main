@@ -56,6 +56,7 @@ function mineOre(event) {
 
         // Reset happiness after the first click cycle is complete
         happiness = 0;
+        nextSound.currentTime = 0; // Reset next sound to the start
         nextSound.play(); // Play sound effect for breaking the rock
     } else {
         if (clickCount % 2 === 0) {
@@ -63,6 +64,7 @@ function mineOre(event) {
             oreState = (oreState % 5) + 1; // Cycle ore states from 1 to 5
             updateOreSprite();
         }
+        clickSound.currentTime = 0; // Reset click sound to the start
         clickSound.play(); // Play sound effect for each click
     }
 
@@ -70,6 +72,7 @@ function mineOre(event) {
     createParticleEffect(mouseX, mouseY); // Add particle effect on each click
     incrementHappiness();
 }
+
 
 function updateOreSprite() {
     ore.style.backgroundImage = `url('assets/wock1-${oreState}.webp')`;
