@@ -30,6 +30,7 @@ const clickSound = document.getElementById('clickSound');
 const nextSound = document.getElementById('nextSound');
 
 document.addEventListener('DOMContentLoaded', () => {
+    loadScore(); // Load the score from localStorage when the page loads
     updateOreSprite(); // Initialize the ore image when the page loads
     updateScoreDisplay(); // Initialize the score display
     updateHappinessBar(); // Initialize the happiness bar
@@ -73,13 +74,25 @@ function mineOre(event) {
     incrementHappiness();
 }
 
-
 function updateOreSprite() {
     ore.style.backgroundImage = `url('assets/wock1-${oreState}.webp')`;
 }
 
 function updateScoreDisplay() {
     scoreDisplay.textContent = `Score: ${score}`;
+    saveScore(); // Save the score whenever it updates
+}
+
+function saveScore() {
+    localStorage.setItem('score', score);
+}
+
+function loadScore() {
+    const savedScore = localStorage.getItem('score');
+    if (savedScore !== null) {
+        score = parseInt(savedScore, 10);
+        updateScoreDisplay();
+    }
 }
 
 function incrementHappiness() {
