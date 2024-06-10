@@ -10,11 +10,11 @@ body {
 
 .cover-image {
     width: 100%;
-    height: 30vh; /* Adjusted to fill the height of the viewport */
+    height: 30vh;
     background-image: url('assets/wock-cover.webp');
     background-size: cover;
     background-position: center;
-    padding: 10px 0; /* Add padding to ensure the image is not cut off */
+    padding: 10px 0;
     margin-bottom: 20px;
 }
 
@@ -24,7 +24,7 @@ body {
 
 .container {
     text-align: center;
-    width: 40%; /* Adjusted to fill around 40% of the screen */
+    width: 40%; /* Adjusted width for desktop */
     margin-bottom: 20px;
 }
 
@@ -34,8 +34,8 @@ h1 {
 }
 
 .ore {
-    width: 150px; /* Adjusted width for the rock */
-    height: 150px; /* Adjusted height for the rock */
+    width: 40vw; /* Adjusted width for desktop */
+    height: 40vw; /* Adjusted height for desktop */
     background-image: url('assets/wock1-1.webp');
     background-size: cover;
     cursor: pointer;
@@ -53,9 +53,8 @@ h1 {
     width: 100%;
     height: 100%;
     background-size: cover;
-    pointer-events: none; /* Prevent the accessory from being clickable */
+    pointer-events: none;
 }
-
 
 .happiness-container {
     width: 150px;
@@ -86,7 +85,7 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 10px; /* Adjusted margin for social media icons */
+    margin-top: 10px;
 }
 
 .about-container {
@@ -97,19 +96,19 @@ h1 {
 }
 
 .about-button img {
-    width: 60px; /* Increase about button size */
-    height: 60px; /* Increase about button size */
-    object-fit: cover; /* Maintain aspect ratio */
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
 }
 
 .social-media a {
-    margin: 0 10px; /* Increase spacing between icons */
+    margin: 0 10px;
 }
 
 .social-media img {
-    max-width: 50px; /* Increase social media icon size */
-    max-height: 50px; /* Increase social media icon size */
-    height: auto; /* Maintain aspect ratio */
+    max-width: 50px;
+    max-height: 50px;
+    height: auto;
 }
 
 /* Particle effects */
@@ -117,7 +116,7 @@ h1 {
     position: absolute;
     background-color: gray;
     border-radius: 50%;
-    pointer-events: none; /* Ensure the particles don't interfere with clicking */
+    pointer-events: none;
 }
 
 .particles {
@@ -151,5 +150,17 @@ h1 {
     100% {
         opacity: 0;
         transform: translate(var(--random-x), var(--random-y)) scale(3);
+    }
+}
+
+/* Media Queries */
+@media screen and (max-width: 768px) {
+    .container {
+        width: 75%;
+    }
+
+    .ore {
+        width: 75vw; /* Adjusted width for mobile devices */
+        height: 75vw; /* Adjusted height for mobile devices */
     }
 }
