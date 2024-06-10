@@ -15,10 +15,15 @@ const unlockThresholds = [0, 10, 100, 500, 1000, 2000, 3500, 10000, 15000, 10000
 
 let currentCharacter = 0;
 let clickCount = 0;
-let oreState = 0;
+let oreState = 1; // Start with initial ore state
 let resetCount = 0; // Track the number of times the rock resets
 let unlockedCharacters = new Array(characters.length).fill(false);
 unlockedCharacters[0] = true; // The first character is always unlocked
+
+let score = 0; // Initialize score variable
+let happiness = 0; // Initialize happiness variable
+const maxHappiness = 100; // Define maxHappiness
+const happinessIncrement = 5; // Define happiness increment
 
 document.addEventListener('DOMContentLoaded', () => {
     const ore = document.getElementById('ore'); // Get the rock element
@@ -62,7 +67,7 @@ function mineOre(event) {
 
         // Reset happiness after the first click cycle is complete
         happiness = 0;
-        nextSound.play(); // Play sound effect for breaking the rock
+        document.getElementById('nextSound').play(); // Play sound effect for breaking the rock
 
         // Increment the reset count and check for character unlocks
         resetCount++;
@@ -72,7 +77,7 @@ function mineOre(event) {
             score += 10; // Add 10 points every 2 clicks
             oreState = (oreState % 5) + 1; // Cycle ore states from 1 to 5
         }
-        clickSound.play(); // Play sound effect for each click
+        document.getElementById('clickSound').play(); // Play sound effect for each click
     }
 
     updateOreSprite();
@@ -87,7 +92,7 @@ function checkForNewCharacter() {
         if (resetCount >= unlockThresholds[i] && !unlockedCharacters[i]) {
             unlockedCharacters[i] = true;
             currentCharacter = i;
-            oreState = 1;
+            oreState = 1; // Reset to initial state
             updateOreSprite();
             alert(`You unlocked character ${i + 1}!`);
             updateCharacterUnlockDisplay();
@@ -97,11 +102,13 @@ function checkForNewCharacter() {
 }
 
 function updateOreSprite() {
+    const ore = document.getElementById('ore');
     ore.style.backgroundImage = `url('${characters[currentCharacter][oreState - 1]}')`;
 }
 
 function updateScoreDisplay() {
-    score.textContent = `Score: ${score}`;
+    const scoreElement = document.getElementById('score');
+    scoreElement.textContent = `Score: ${score}`;
 }
 
 function incrementHappiness() {
@@ -110,6 +117,7 @@ function incrementHappiness() {
 }
 
 function updateHappinessBar() {
+    const happinessBar = document.getElementById('happinessBar');
     happinessBar.style.width = `${happiness}%`;
 }
 
@@ -169,7 +177,7 @@ function setupMuteButton() {
             muteButton.textContent = 'Mute';
         }
     });
-} 
+}
 
 // Call the function to set up the mute button functionality
 setupMuteButton();
