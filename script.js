@@ -145,22 +145,6 @@ function createLargeParticleEffect(x, y) {
     }
 }
 
-function setupMuteButton() {
-    let isMuted = false;
-    const muteButton = document.getElementById('mute-button');
-    const clickSound = document.getElementById('clickSound');
-    const nextSound = document.getElementById('nextSound');
-
-    muteButton.addEventListener('click', () => {
-        isMuted = !isMuted;
-        clickSound.volume = isMuted ? 0 : 1;
-        nextSound.volume = isMuted ? 0 : 1;
-        muteButton.textContent = isMuted ? 'Unmute' : 'Mute';
-    });
-}
-
-setupMuteButton();
-
 function assignRandomAccessory() {
     const accessoryIndex = Math.floor(Math.random() * accessories.length);
     const accessory = document.getElementById('accessory');
