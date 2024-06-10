@@ -8,6 +8,18 @@ body {
     padding: 0;
 }
 
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px; /* Adjust padding as needed */
+}
+
+.left-icons {
+    display: flex;
+    align-items: center;
+}
+
 .wock-icon {
     max-width: 50px; /* Adjust icon size as needed */
     max-height: 50px;
@@ -39,6 +51,9 @@ body {
     max-height: 50px;
 }
 
+.social-media-header {
+    display: flex;
+}
 
 .cover-image {
     width: 100%;
