@@ -217,7 +217,8 @@ h1 {
         position: relative;
         padding: 10px 20px; /* Adjust padding for mobile */
     }
-    .wock-icon {
+    .wock-icon,
+    .about-button img {
         display: none; /* Hide the wock icon and about button on mobile */
     }
 }
