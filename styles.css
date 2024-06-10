@@ -206,7 +206,7 @@ body {
     border-radius: 10px; /* Adjust border radius as needed */
     background-color: black;
     color: white;
-    padding: 10px; /* Adjust padding as needed */
+    padding: 1px; /* Adjust padding as needed */
     display: inline-block; /* Ensures the container wraps around the content */
 }
 
