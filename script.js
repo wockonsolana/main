@@ -47,7 +47,8 @@ function preloadImages(imagePaths) {
 }
 
 preloadImages([
-    ...characters.flat(),
+    ...characters[0], // Images for character 1
+    ...characters[1], // Images for character 2
     ...accessories,
     'assets/click-effect.wav', 
     'assets/next-effect.wav'
