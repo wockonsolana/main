@@ -22,14 +22,14 @@ body {
 }
 
 .wock-icon {
-    max-width: 50px; /* Adjust icon size as needed */
-    max-height: 50px;
+    max-width: 60px; /* Adjust icon size as needed */
+    max-height: 60px;
     margin-right: 10px; /* Add margin between icon and about button */
 }
 
 .about-button img {
-    max-width: 50px; /* Adjust icon size as needed */
-    max-height: 50px;
+    max-width: 60px; /* Adjust icon size as needed */
+    max-height: 60px;
     object-fit: cover;
 }
 
