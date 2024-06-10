@@ -25,7 +25,7 @@ let resetCount = 0;
 let score = 0;
 let happiness = 0;
 const maxHappiness = 100;
-const happinessIncrement = 5;
+const happinessIncrement = 10;
 const unlockedCharacters = new Array(characters.length).fill(false);
 unlockedCharacters[0] = true;
 
