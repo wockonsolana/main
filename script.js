@@ -56,7 +56,7 @@ preloadImages([
 function mineOre(event) {
     clickCount++;
     const mouseX = event.clientX;
-    const mouseY = event.clientY;
+    const mouseY = event.clientY + window.scrollY; 
 
     if (clickCount % 10 === 0) {
         score += 60;
