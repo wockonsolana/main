@@ -197,10 +197,12 @@ body {
 }
 
 .contract {
-    display: inline-block;
+    display: flex; /* Use flexbox */
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
     background-color: black;
     color: white;
-    padding: 10px 15px; /* Adjusted padding */
+    padding: 10px 15px;
     border-radius: 10px;
     max-height: 40px;
     overflow: hidden;
