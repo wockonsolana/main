@@ -205,9 +205,9 @@ body {
 .contract {
     border-radius: 10px; /* Adjust border radius as needed */
     background-color: black;
-    color: white;
-    padding: 1px; /* Adjust padding as needed */
-    display: inline-block; /* Ensures the container wraps around the content */
+    padding: 5px 10px; /* Adjust padding as needed */
+    border-radius: 10px; /* Adjust border radius as needed */
+    max-height: 20px; /* Set maximum height */
 }
 
 .contract a {
