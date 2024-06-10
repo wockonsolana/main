@@ -39,9 +39,6 @@ document.addEventListener('DOMContentLoaded', () => {
     updateCharacterUnlockDisplay();
 });
 
-const clickSound = new Audio('assets/click-effect.wav');
-const nextSound = new Audio('assets/next-effect.wav');
-
 preloadImages([
     ...characters[0], // Images for character 1
     ...characters[1], // Images for character 2
@@ -60,10 +57,25 @@ function preloadImages(resources) {
         }
     });
 }
+// Initialize audio pools
+const clickSoundPool = createAudioPool('assets/click-effect.wav', 10); // Pool of 10 audio elements for click sound
+const nextSoundPool = createAudioPool('assets/next-effect.wav', 5);    // Pool of 5 audio elements for next sound
 
-function playSound(src) {
-    const sound = new Audio(src);
-    sound.play();
+function createAudioPool(src, size) {
+    const pool = [];
+    for (let i = 0; i < size; i++) {
+        const audio = new Audio(src);
+        pool.push(audio);
+    }
+    return pool;
+}
+
+function playSoundFromPool(pool) {
+    const audio = pool.find(a => a.paused);
+    if (audio) {
+        audio.currentTime = 0; // Reset the audio to start
+        audio.play();
+    }
 }
 
 function mineOre(event) {
@@ -78,7 +90,7 @@ function mineOre(event) {
         ore.classList.add('shake');
         setTimeout(() => ore.classList.remove('shake'), 150);
         happiness = 0;
-        playSound('assets/next-effect.wav');
+        playSoundFromPool(nextSoundPool);
         resetCount++;
         checkForNewCharacter();
         assignRandomAccessory(); // Assign a new accessory
@@ -87,7 +99,7 @@ function mineOre(event) {
             score += 10;
             oreState = (oreState % 5) + 1;
         }
-        playSound('assets/click-effect.wav');
+        playSoundFromPool(clickSoundPool);
     }
 
     updateOreSprite();
@@ -96,6 +108,7 @@ function mineOre(event) {
     incrementHappiness();
     saveProgress();
 }
+
 
 function checkForNewCharacter() {
     for (let i = currentCharacter + 1; i < unlockThresholds.length; i++) {
