@@ -6,6 +6,7 @@ body {
     align-items: center;
     margin: 0;
     padding: 0;
+    font-size: 40px;
 }
 
 .header {
@@ -219,5 +220,8 @@ body {
     .wock-icon,
     .about-button img {
         display: none; /* Hide the wock icon and about button on mobile */
+    }
+    body {
+    font-size: 20px;
     }
 }
