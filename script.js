@@ -17,7 +17,7 @@ const accessories = [
     'assets/item-6.webp', 'assets/item-7.webp', 'assets/item-8.webp', 'assets/item-9.webp', 'assets/item-10.webp',
     'assets/item-11.webp', 'assets/item-12.webp'
 ];
-
+// Initialize audio elements
 let currentCharacter = 0;
 let clickCount = 0;
 let oreState = 1;
@@ -31,7 +31,7 @@ unlockedCharacters[0] = true;
 
 document.addEventListener('DOMContentLoaded', () => {
     const ore = document.getElementById('ore');
-    ore.addEventListener('click', mineOre);
+    ore.addEventListener('click', throttle(mineOre, 50)); // Throttling click events to every 50ms
     loadProgress();
     updateOreSprite();
     updateScoreDisplay();
@@ -39,44 +39,20 @@ document.addEventListener('DOMContentLoaded', () => {
     updateCharacterUnlockDisplay();
 });
 
+function preloadImages(imagePaths) {
+    imagePaths.forEach(path => {
+        const img = new Image();
+        img.src = path;
+    });
+}
+
 preloadImages([
     ...characters[0], // Images for character 1
     ...characters[1], // Images for character 2
     ...accessories,
-    clickSound,
-    nextSound
+    'assets/click-effect.wav', 
+    'assets/next-effect.wav'
 ]);
-
-function preloadImages(resources) {
-    resources.forEach(resource => {
-        if (typeof resource === 'string') {
-            const img = new Image();
-            img.src = resource;
-        } else if (resource instanceof Audio) {
-            resource.load();
-        }
-    });
-}
-// Initialize audio pools
-const clickSoundPool = createAudioPool('assets/click-effect.wav', 10); // Pool of 10 audio elements for click sound
-const nextSoundPool = createAudioPool('assets/next-effect.wav', 5);    // Pool of 5 audio elements for next sound
-
-function createAudioPool(src, size) {
-    const pool = [];
-    for (let i = 0; i < size; i++) {
-        const audio = new Audio(src);
-        pool.push(audio);
-    }
-    return pool;
-}
-
-function playSoundFromPool(pool) {
-    const audio = pool.find(a => a.paused);
-    if (audio) {
-        audio.currentTime = 0; // Reset the audio to start
-        audio.play();
-    }
-}
 
 function mineOre(event) {
     clickCount++;
@@ -90,7 +66,7 @@ function mineOre(event) {
         ore.classList.add('shake');
         setTimeout(() => ore.classList.remove('shake'), 150);
         happiness = 0;
-        playSoundFromPool(nextSoundPool);
+        playSound('assets/next-effect.wav');
         resetCount++;
         checkForNewCharacter();
         assignRandomAccessory(); // Assign a new accessory
@@ -99,7 +75,7 @@ function mineOre(event) {
             score += 10;
             oreState = (oreState % 5) + 1;
         }
-        playSoundFromPool(clickSoundPool);
+        playSound('assets/click-effect.wav');
     }
 
     updateOreSprite();
@@ -109,6 +85,10 @@ function mineOre(event) {
     saveProgress();
 }
 
+function playSound(src) {
+    const audio = new Audio(src);
+    audio.play();
+}
 
 function checkForNewCharacter() {
     for (let i = currentCharacter + 1; i < unlockThresholds.length; i++) {
@@ -209,4 +189,25 @@ function updateCharacterUnlockDisplay() {
     const unlockedCount = unlockedCharacters.filter(Boolean).length;
     const characterUnlockDisplay = document.getElementById('character-unlock-display');
     characterUnlockDisplay.textContent = `Characters Unlocked: ${unlockedCount}/10`;
+}
+
+function throttle(func, limit) {
+    let lastFunc;
+    let lastRan;
+    return function() {
+        const context = this;
+        const args = arguments;
+        if (!lastRan) {
+            func.apply(context, args);
+            lastRan = Date.now();
+        } else {
+            clearTimeout(lastFunc);
+            lastFunc = setTimeout(function() {
+                if ((Date.now() - lastRan) >= limit) {
+                    func.apply(context, args);
+                    lastRan = Date.now();
+                }
+            }, limit - (Date.now() - lastRan));
+        }
+    }
 }
