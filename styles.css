@@ -203,11 +203,14 @@ body {
     }
 }
 .contract {
-    border-radius: 10px; /* Adjust border radius as needed */
+    display: inline-block; /* Ensures the container only takes up as much space as necessary */
     background-color: black;
+    color: white;
     padding: 5px 10px; /* Adjust padding as needed */
     border-radius: 10px; /* Adjust border radius as needed */
     max-height: 20px; /* Set maximum height */
+    overflow: hidden; /* Hide overflowing content */
+}
 }
 
 .contract a {
