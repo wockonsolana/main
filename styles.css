@@ -12,8 +12,9 @@ body {
     position: fixed;
     top: 0;
     right: 0;
-    background-color: #f0f0f0; /* Adjust background color if needed */
+    background-color: #ffffff; /* Adjust background color if needed */
     padding: 10px; /* Adjust padding as needed */
+    z-index: 999; /* Ensure it's above other content */
 }
 
 .social-media-header a {
@@ -182,5 +183,9 @@ h1 {
     .ore {
         width: 75vw; /* Adjusted width for mobile devices */
         height: 75vw; /* Adjusted height for mobile devices */
+    }
+    .social-media-header {
+        position: relative;
+        padding: 10px 20px; /* Adjust padding for mobile */
     }
 }
