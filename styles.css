@@ -202,6 +202,22 @@ body {
         transform: translate(var(--random-x), var(--random-y)) scale(3);
     }
 }
+.contract {
+    border-radius: 10px; /* Adjust border radius as needed */
+    background-color: black;
+    color: white;
+    padding: 10px; /* Adjust padding as needed */
+    display: inline-block; /* Ensures the container wraps around the content */
+}
+
+.contract a {
+    color: white; /* Set hyperlink color */
+    text-decoration: none; /* Remove underline from hyperlink */
+}
+
+.contract a:hover {
+    text-decoration: underline; /* Add underline on hover */
+}
 
 /* Media Queries */
 @media screen and (max-width: 768px) {
