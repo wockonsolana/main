@@ -26,8 +26,8 @@ body {
 .container {
     text-align: center;
     width: 40%; /* Adjusted width for desktop */
-    margin: 20px auto; /* Adjusted margin for the container */
-    padding: 20px; /* Adjusted padding for the container */
+    margin: 5px auto; /* Adjusted margin for the container */
+    padding: 5px; /* Adjusted padding for the container */
 }
 
 h1 {
