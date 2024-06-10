@@ -14,6 +14,7 @@ body {
     background-image: url('assets/wock-cover.webp');
     background-size: contain;
     background-position: center;
+    background-repeat: no-repeat;
     padding: 5px 0;
     margin-bottom: 5px;
 }
