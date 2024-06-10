@@ -12,6 +12,11 @@ const characters = [
 ];
 
 const unlockThresholds = [0, 10, 100, 500, 1000, 2000, 3500, 10000, 15000, 100000];
+const accessories = [
+    'assets/item-1.webp', 'assets/item-2.webp', 'assets/item-3.webp', 'assets/item-4.webp', 'assets/item-5.webp',
+    'assets/item-6.webp', 'assets/item-7.webp', 'assets/item-8.webp', 'assets/item-9.webp', 'assets/item-10.webp',
+    'assets/item-11.webp', 'assets/item-12.webp'
+];
 
 let currentCharacter = 0;
 let clickCount = 0;
@@ -43,6 +48,7 @@ function preloadImages(imagePaths) {
 
 preloadImages([
     ...characters.flat(),
+    ...accessories,
     'assets/click-effect.wav', 
     'assets/next-effect.wav'
 ]);
@@ -62,6 +68,7 @@ function mineOre(event) {
         document.getElementById('nextSound').play();
         resetCount++;
         checkForNewCharacter();
+        assignRandomAccessory(); // Assign a new accessory
     } else {
         if (clickCount % 2 === 0) {
             score += 10;
@@ -152,6 +159,12 @@ function setupMuteButton() {
 }
 
 setupMuteButton();
+
+function assignRandomAccessory() {
+    const accessoryIndex = Math.floor(Math.random() * accessories.length);
+    const accessory = document.getElementById('accessory');
+    accessory.style.backgroundImage = `url('${accessories[accessoryIndex]}')`;
+}
 
 function saveProgress() {
     const progress = {
