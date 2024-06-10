@@ -61,11 +61,15 @@ function preloadImages(resources) {
     });
 }
 
+function playSound(src) {
+    const sound = new Audio(src);
+    sound.play();
+}
 
 function mineOre(event) {
     clickCount++;
     const mouseX = event.clientX;
-    const mouseY = event.clientY + window.scrollY; 
+    const mouseY = event.clientY + window.scrollY;
 
     if (clickCount % 10 === 0) {
         score += 60;
@@ -74,8 +78,7 @@ function mineOre(event) {
         ore.classList.add('shake');
         setTimeout(() => ore.classList.remove('shake'), 150);
         happiness = 0;
-        nextSound.currentTime = 0; // Reset the playback position
-        nextSound.play();
+        playSound('assets/next-effect.wav');
         resetCount++;
         checkForNewCharacter();
         assignRandomAccessory(); // Assign a new accessory
@@ -84,8 +87,7 @@ function mineOre(event) {
             score += 10;
             oreState = (oreState % 5) + 1;
         }
-        clickSound.currentTime = 0; // Reset the playback position
-        clickSound.play();
+        playSound('assets/click-effect.wav');
     }
 
     updateOreSprite();
@@ -94,7 +96,6 @@ function mineOre(event) {
     incrementHappiness();
     saveProgress();
 }
-
 
 function checkForNewCharacter() {
     for (let i = currentCharacter + 1; i < unlockThresholds.length; i++) {
