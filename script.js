@@ -15,38 +15,36 @@ const unlockThresholds = [0, 10, 100, 500, 1000, 2000, 3500, 10000, 15000, 10000
 
 let currentCharacter = 0;
 let clickCount = 0;
-let oreState = 1; // Start with initial ore state
-let resetCount = 0; // Track the number of times the rock resets
-let unlockedCharacters = new Array(characters.length).fill(false);
-unlockedCharacters[0] = true; // The first character is always unlocked
-
-let score = 0; // Initialize score variable
-let happiness = 0; // Initialize happiness variable
-const maxHappiness = 100; // Define maxHappiness
-const happinessIncrement = 5; // Define happiness increment
+let oreState = 1;
+let resetCount = 0;
+let score = 0;
+let happiness = 0;
+const maxHappiness = 100;
+const happinessIncrement = 5;
+const unlockedCharacters = new Array(characters.length).fill(false);
+unlockedCharacters[0] = true;
 
 document.addEventListener('DOMContentLoaded', () => {
-    const ore = document.getElementById('ore'); // Get the rock element
-    ore.addEventListener('click', mineOre); // Attach mineOre function to the rock's click event
-    updateOreSprite(); // Initialize the ore image when the page loads
-    updateScoreDisplay(); // Initialize the score display
-    updateHappinessBar(); // Initialize the happiness bar
-    loadProgress(); // Load saved progress if any
-    updateCharacterUnlockDisplay(); // Initialize the character unlock display
+    const ore = document.getElementById('ore');
+    ore.addEventListener('click', mineOre);
+    loadProgress();
+    updateOreSprite();
+    updateScoreDisplay();
+    updateHappinessBar();
+    updateCharacterUnlockDisplay();
 });
 
 function preloadImages(imagePaths) {
-    imagePaths.forEach((path) => {
+    imagePaths.forEach(path => {
         const img = new Image();
         img.src = path;
     });
 }
 
-// Preload the first two characters
 preloadImages([
-    'assets/wock1-1.webp', 'assets/wock1-2.webp', 'assets/wock1-3.webp', 'assets/wock1-4.webp', 'assets/wock1-5.webp',
-    'assets/wock2-1.webp', 'assets/wock2-2.webp', 'assets/wock2-3.webp', 'assets/wock2-4.webp', 'assets/wock2-5.webp',
-    'assets/click-effect.wav', 'assets/next-effect.wav'
+    ...characters.flat(),
+    'assets/click-effect.wav', 
+    'assets/next-effect.wav'
 ]);
 
 function mineOre(event) {
@@ -55,36 +53,28 @@ function mineOre(event) {
     const mouseY = event.clientY;
 
     if (clickCount % 10 === 0) {
-        score += 60; // Add 60 points when the rock breaks (every 10 clicks)
-        oreState = 1; // Reset to initial state
-        createLargeParticleEffect(mouseX, mouseY); // Add larger particle effect when rocks break
-
-        // Add shake effect on the 10th click
+        score += 60;
+        oreState = 1;
+        createLargeParticleEffect(mouseX, mouseY);
         ore.classList.add('shake');
-        setTimeout(() => {
-            ore.classList.remove('shake');
-        }, 150);
-
-        // Reset happiness after the first click cycle is complete
+        setTimeout(() => ore.classList.remove('shake'), 150);
         happiness = 0;
-        document.getElementById('nextSound').play(); // Play sound effect for breaking the rock
-
-        // Increment the reset count and check for character unlocks
+        document.getElementById('nextSound').play();
         resetCount++;
         checkForNewCharacter();
     } else {
         if (clickCount % 2 === 0) {
-            score += 10; // Add 10 points every 2 clicks
-            oreState = (oreState % 5) + 1; // Cycle ore states from 1 to 5
+            score += 10;
+            oreState = (oreState % 5) + 1;
         }
-        document.getElementById('clickSound').play(); // Play sound effect for each click
+        document.getElementById('clickSound').play();
     }
 
     updateOreSprite();
     updateScoreDisplay();
-    createParticleEffect(mouseX, mouseY); // Add particle effect on each click
+    createParticleEffect(mouseX, mouseY);
     incrementHappiness();
-    saveProgress(); // Save progress on each click
+    saveProgress();
 }
 
 function checkForNewCharacter() {
@@ -92,7 +82,7 @@ function checkForNewCharacter() {
         if (resetCount >= unlockThresholds[i] && !unlockedCharacters[i]) {
             unlockedCharacters[i] = true;
             currentCharacter = i;
-            oreState = 1; // Reset to initial state
+            oreState = 1;
             updateOreSprite();
             alert(`You unlocked character ${i + 1}!`);
             updateCharacterUnlockDisplay();
@@ -107,8 +97,8 @@ function updateOreSprite() {
 }
 
 function updateScoreDisplay() {
-    const scoreElement = document.getElementById('score');
-    scoreElement.textContent = `Score: ${score}`;
+    const scoreDisplay = document.getElementById('score');
+    scoreDisplay.textContent = `Score: ${score}`;
 }
 
 function incrementHappiness() {
@@ -122,38 +112,28 @@ function updateHappinessBar() {
 }
 
 function createParticleEffect(x, y) {
-    for (let i = 0; i < 10; i++) { // Create multiple small particles for more effect
-        const particles = document.createElement('div');
-        particles.classList.add('particles');
-        particles.style.left = `${x}px`;
-        particles.style.top = `${y}px`;
-
-        // Add randomness to the particle movement
-        particles.style.setProperty('--random-x', `${Math.random() * 100 - 50}px`);
-        particles.style.setProperty('--random-y', `${Math.random() * 100 - 50}px`);
-
-        document.body.appendChild(particles);
-        particles.addEventListener('animationend', () => {
-            document.body.removeChild(particles);
-        });
+    for (let i = 0; i < 10; i++) {
+        const particle = document.createElement('div');
+        particle.classList.add('particles');
+        particle.style.left = `${x}px`;
+        particle.style.top = `${y}px`;
+        particle.style.setProperty('--random-x', `${Math.random() * 100 - 50}px`);
+        particle.style.setProperty('--random-y', `${Math.random() * 100 - 50}px`);
+        document.body.appendChild(particle);
+        particle.addEventListener('animationend', () => document.body.removeChild(particle));
     }
 }
 
 function createLargeParticleEffect(x, y) {
-    for (let i = 0; i < 5; i++) { // Create multiple larger particles for more effect
-        const particles = document.createElement('div');
-        particles.classList.add('large-particles');
-        particles.style.left = `${x}px`;
-        particles.style.top = `${y}px`;
-
-        // Add randomness to the large particle movement
-        particles.style.setProperty('--random-x', `${Math.random() * 200 - 100}px`);
-        particles.style.setProperty('--random-y', `${Math.random() * 200 - 100}px`);
-
-        document.body.appendChild(particles);
-        particles.addEventListener('animationend', () => {
-            document.body.removeChild(particles);
-        });
+    for (let i = 0; i < 5; i++) {
+        const particle = document.createElement('div');
+        particle.classList.add('large-particles');
+        particle.style.left = `${x}px`;
+        particle.style.top = `${y}px`;
+        particle.style.setProperty('--random-x', `${Math.random() * 200 - 100}px`);
+        particle.style.setProperty('--random-y', `${Math.random() * 200 - 100}px`);
+        document.body.appendChild(particle);
+        particle.addEventListener('animationend', () => document.body.removeChild(particle));
     }
 }
 
@@ -165,21 +145,12 @@ function setupMuteButton() {
 
     muteButton.addEventListener('click', () => {
         isMuted = !isMuted;
-        if (isMuted) {
-            // Mute sounds
-            clickSound.volume = 0;
-            nextSound.volume = 0;
-            muteButton.textContent = 'Unmute';
-        } else {
-            // Unmute sounds
-            clickSound.volume = 1;
-            nextSound.volume = 1;
-            muteButton.textContent = 'Mute';
-        }
+        clickSound.volume = isMuted ? 0 : 1;
+        nextSound.volume = isMuted ? 0 : 1;
+        muteButton.textContent = isMuted ? 'Unmute' : 'Mute';
     });
 }
 
-// Call the function to set up the mute button functionality
 setupMuteButton();
 
 function saveProgress() {
@@ -190,18 +161,20 @@ function saveProgress() {
         resetCount,
         unlockedCharacters
     };
-    document.cookie = `progress=${JSON.stringify(progress)}; path=/;`;
+    localStorage.setItem('progress', JSON.stringify(progress));
 }
 
 function loadProgress() {
-    const match = document.cookie.match(new RegExp('(^| )progress=([^;]+)'));
-    if (match) {
-        const progress = JSON.parse(match[2]);
+    const savedProgress = localStorage.getItem('progress');
+    if (savedProgress) {
+        const progress = JSON.parse(savedProgress);
         score = progress.score;
         happiness = progress.happiness;
         currentCharacter = progress.currentCharacter;
         resetCount = progress.resetCount;
-        unlockedCharacters = progress.unlockedCharacters;
+        for (let i = 0; i < progress.unlockedCharacters.length; i++) {
+            unlockedCharacters[i] = progress.unlockedCharacters[i];
+        }
         updateOreSprite();
         updateScoreDisplay();
         updateHappinessBar();
@@ -211,6 +184,6 @@ function loadProgress() {
 
 function updateCharacterUnlockDisplay() {
     const unlockedCount = unlockedCharacters.filter(Boolean).length;
-    document.getElementById('character-unlock-display').textContent = `Characters Unlocked: ${unlockedCount}/10`;
+    const characterUnlockDisplay = document.getElementById('character-unlock-display');
+    characterUnlockDisplay.textContent = `Characters Unlocked: ${unlockedCount}/10`;
 }
-
