@@ -74,7 +74,8 @@ function mineOre(event) {
         ore.classList.add('shake');
         setTimeout(() => ore.classList.remove('shake'), 150);
         happiness = 0;
-        document.getElementById('nextSound').play();
+        nextSound.currentTime = 0; // Reset the playback position
+        nextSound.play();
         resetCount++;
         checkForNewCharacter();
         assignRandomAccessory(); // Assign a new accessory
@@ -83,7 +84,8 @@ function mineOre(event) {
             score += 10;
             oreState = (oreState % 5) + 1;
         }
-        document.getElementById('clickSound').play();
+        clickSound.currentTime = 0; // Reset the playback position
+        clickSound.play();
     }
 
     updateOreSprite();
@@ -92,6 +94,7 @@ function mineOre(event) {
     incrementHappiness();
     saveProgress();
 }
+
 
 function checkForNewCharacter() {
     for (let i = currentCharacter + 1; i < unlockThresholds.length; i++) {
