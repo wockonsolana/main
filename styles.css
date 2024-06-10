@@ -10,7 +10,7 @@ body {
 
 .cover-image {
     width: 100%;
-    height: 25vh;
+    height: 20vh;
     background-image: url('assets/wock-cover.webp');
     background-size: contain;
     background-position: center;
