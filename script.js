@@ -39,20 +39,28 @@ document.addEventListener('DOMContentLoaded', () => {
     updateCharacterUnlockDisplay();
 });
 
-function preloadImages(imagePaths) {
-    imagePaths.forEach(path => {
-        const img = new Image();
-        img.src = path;
-    });
-}
+const clickSound = new Audio('assets/click-effect.wav');
+const nextSound = new Audio('assets/next-effect.wav');
 
 preloadImages([
     ...characters[0], // Images for character 1
     ...characters[1], // Images for character 2
     ...accessories,
-    'assets/click-effect.wav', 
-    'assets/next-effect.wav'
+    clickSound,
+    nextSound
 ]);
+
+function preloadImages(resources) {
+    resources.forEach(resource => {
+        if (typeof resource === 'string') {
+            const img = new Image();
+            img.src = resource;
+        } else if (resource instanceof Audio) {
+            resource.load();
+        }
+    });
+}
+
 
 function mineOre(event) {
     clickCount++;
