@@ -74,7 +74,7 @@ body {
 .container {
     text-align: center;
     width: 40%; /* Adjusted width for desktop */
-    margin: 5px auto; /* Adjusted margin for the container */
+    margin: -10px auto; /* Adjusted margin for the container */
     padding: 5px; /* Adjusted padding for the container */
 }
 
