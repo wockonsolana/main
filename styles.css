@@ -18,22 +18,23 @@ body {
 .left-icons {
     display: flex;
     align-items: center;
+    margin-right: auto; /* Push left icons to the far left */
 }
 
 .wock-icon {
     max-width: 50px; /* Adjust icon size as needed */
     max-height: 50px;
-    margin-right: 5px; /* Add margin between icon and about button */
+    margin-right: 10px; /* Add margin between icon and about button */
 }
 
 .about-button img {
-    width: 50px; /* Adjust about button size as needed */
-    height: 50px;
+    max-width: 50px; /* Adjust icon size as needed */
+    max-height: 50px;
     object-fit: cover;
-    margin-left: auto; /* Push the about button to the far right */
 }
 
 .social-media-header {
+    display: flex;
     position: fixed;
     top: 0;
     right: 0;
