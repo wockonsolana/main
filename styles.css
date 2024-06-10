@@ -46,6 +46,17 @@ h1 {
     align-items: center;
 }
 
+.accessory {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    pointer-events: none; /* Prevent the accessory from being clickable */
+}
+
+
 .happiness-container {
     width: 150px;
     height: 20px;
