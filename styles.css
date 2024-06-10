@@ -20,7 +20,9 @@ body {
     align-items: center;
     margin-right: auto; /* Push left icons to the far left */
     position: fixed;
+    left: 0; /* Position the left icons header at the left side of the screen */
 }
+
 
 .wock-icon {
     max-width: 60px; /* Adjust icon size as needed */
