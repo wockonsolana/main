@@ -19,6 +19,7 @@ body {
     display: flex;
     align-items: center;
     margin-right: auto; /* Push left icons to the far left */
+    position: fixed;
 }
 
 .wock-icon {
