@@ -10,7 +10,7 @@ body {
 
 .cover-image {
     width: 100%;
-    height: 20vh;
+    height: 25vh;
     background-image: url('assets/wock-cover.webp');
     background-size: contain;
     background-position: center;
@@ -62,7 +62,7 @@ h1 {
     height: 20px;
     background-color: #e0e0e0;
     border: 1px solid #ccc;
-    margin: 10px auto;
+    margin: 5 px auto;
 }
 
 .happinessBar {
@@ -72,7 +72,7 @@ h1 {
 }
 
 .score {
-    margin-top: 10px;
+    margin-top: 0px;
 }
 
 .mute-button {
