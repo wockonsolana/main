@@ -195,24 +195,24 @@ body {
         transform: translate(var(--random-x), var(--random-y)) scale(3);
     }
 }
+
 .contract {
-    display: inline-block; /* Ensures the container only takes up as much space as necessary */
+    display: inline-block;
     background-color: black;
     color: white;
-    padding: 5px 10px; /* Adjust padding as needed */
-    border-radius: 10px; /* Adjust border radius as needed */
-    max-height: 40px; /* Set maximum height */
-    overflow: hidden; /* Hide overflowing content */
-}
+    padding: 10px 15px; /* Adjusted padding */
+    border-radius: 10px;
+    max-height: 40px;
+    overflow: hidden;
 }
 
 .contract a {
-    color: white; /* Set hyperlink color */
-    text-decoration: none; /* Remove underline from hyperlink */
+    color: white;
+    text-decoration: none;
 }
 
 .contract a:hover {
-    text-decoration: underline; /* Add underline on hover */
+    text-decoration: underline;
 }
 
 /* Media Queries */
