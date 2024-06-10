@@ -124,13 +124,6 @@ body {
     margin-top: 0px;
 }
 
-.mute-button {
-    font-family: 'Indie Flower', cursive;
-    background-color: black;
-    color: white;
-    border: none;
-}
-
 .social-media {
     display: flex;
     justify-content: center;
@@ -208,7 +201,7 @@ body {
     color: white;
     padding: 5px 10px; /* Adjust padding as needed */
     border-radius: 10px; /* Adjust border radius as needed */
-    max-height: 20px; /* Set maximum height */
+    max-height: 40px; /* Set maximum height */
     overflow: hidden; /* Hide overflowing content */
 }
 }
