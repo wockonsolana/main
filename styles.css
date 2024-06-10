@@ -8,6 +8,19 @@ body {
     padding: 0;
 }
 
+.wock-icon {
+    max-width: 50px; /* Adjust icon size as needed */
+    max-height: 50px;
+    margin-right: 5px; /* Add margin between icon and about button */
+}
+
+.about-button img {
+    width: 50px; /* Adjust about button size as needed */
+    height: 50px;
+    object-fit: cover;
+    margin-left: auto; /* Push the about button to the far right */
+}
+
 .social-media-header {
     position: fixed;
     top: 0;
@@ -187,5 +200,8 @@ h1 {
     .social-media-header {
         position: relative;
         padding: 10px 20px; /* Adjust padding for mobile */
+    }
+    .wock-icon {
+        display: none; /* Hide the wock icon and about button on mobile */
     }
 }
