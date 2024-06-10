@@ -82,8 +82,8 @@ body {
 }
 
 .ore {
-    width: 40vw; /* Adjusted width for desktop */
-    height: 40vw; /* Adjusted height for desktop */
+    width: 30vw; /* Adjusted width for desktop */
+    height: 30vw; /* Adjusted height for desktop */
     background-image: url('assets/wock1-1.webp');
     background-size: cover;
     cursor: pointer;
