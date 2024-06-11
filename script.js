@@ -31,7 +31,7 @@ unlockedCharacters[0] = true;
 
 document.addEventListener('DOMContentLoaded', () => {
     const ore = document.getElementById('ore');
-    ore.addEventListener('click', throttle(mineOre, 50)); // Throttling click events to every 50ms
+    ore.addEventListener('click', throttle(mineOre, 20)); // Throttling click events to every 50ms
     loadProgress();
     updateOreSprite();
     updateScoreDisplay();
@@ -50,7 +50,6 @@ preloadImages([
     ...characters[0], // Images for character 1
     ...characters[1], // Images for character 2
     ...accessories,
-    'assets/click-effect.wav', 
     'assets/next-effect.wav'
 ]);
 
@@ -75,7 +74,6 @@ function mineOre(event) {
             score += 10;
             oreState = (oreState % 5) + 1;
         }
-        playSound('assets/click-effect.wav');
     }
 
     updateOreSprite();
