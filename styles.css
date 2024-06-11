@@ -51,7 +51,6 @@ p {
     position: fixed;
     top: 0;
     right: 0;
-    background-color: #f0f0f0; /* Adjust background color if needed */
     padding: 10px; /* Adjust padding as needed */
     z-index: 999; /* Ensure it's above other content */
 }
