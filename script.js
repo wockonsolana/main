@@ -11,7 +11,7 @@ const characters = [
     ['assets/wock10-1.webp', 'assets/wock10-2.webp', 'assets/wock10-3.webp', 'assets/wock10-4.webp', 'assets/wock10-5.webp']
 ];
 
-const unlockThresholds = [0, 10, 100, 500, 1000, 2000, 3500, 10000, 15000, 100000];
+const unlockThresholds = [0, 10, 100, 250, 500, 1000, 2000, 5000, 10000, 25000];
 const accessories = [
     'assets/item-1.webp', 'assets/item-2.webp', 'assets/item-3.webp', 'assets/item-4.webp', 'assets/item-5.webp',
     'assets/item-6.webp', 'assets/item-7.webp', 'assets/item-8.webp', 'assets/item-9.webp', 'assets/item-10.webp',
