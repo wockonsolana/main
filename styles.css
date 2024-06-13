@@ -267,6 +267,9 @@ p {
         display: none; /* Hide the wock icon and about button on mobile */
     }
     body {
-    font-size: 20px;
+    font-size: 18px;
+    }
+    p {
+    font-size: 18px;
     }
 }
