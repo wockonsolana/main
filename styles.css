@@ -229,6 +229,7 @@ p {
     max-height: 40px;
     overflow: hidden;
     width: 75%;
+    margin: 0 auto;
 }
 
 .contract a {
