@@ -228,6 +228,7 @@ p {
     border-radius: 10px;
     max-height: 40px;
     overflow: hidden;
+    width: 75%;
 }
 
 .contract a {
